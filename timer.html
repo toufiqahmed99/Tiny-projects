@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black;
+            color: aliceblue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .timer {
+            font-size: 100px;
+            font-weight: bold;
+        }
+    </style>
+    <title>Timer</title>
+</head>
+<body>
+    <div class="timer" id="timer">00:00:00</div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function (){
+            const timerElement = document.getElementById('timer');
+            let seconds = 0;
+            let minutes = 0;
+            let hours = 0;
+            function pad(number) {
+                return (number < 10) ? '0' + number : number;
+            }
+            function updateTimer() {
+                seconds++;
+                if (seconds === 60) {
+                    seconds = 0;
+                minutes++;
+                if (minutes === 60) {
+                    minutes = 0;
+                hours++;
+                }
+            }
+            timerElement.textContent = pad(hours) + ':' + pad(minutes) + ':' + pad(seconds);
+        }
+        setInterval(updateTimer, 1000);
+    });
+    </script>
+    
+</body>
+</html>
